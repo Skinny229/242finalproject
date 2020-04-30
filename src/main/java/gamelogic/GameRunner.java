@@ -23,9 +23,13 @@ public class GameRunner {
         return new PlayerView(player1, player2);
     }
 
-    public boolean placeShipPlayer1(){}
+    public boolean placeShipPlayer1(int x, int y, Direction dir){
+        return false; //TODO:: Implement me
+    }
 
-    public boolean placeShipPlayer2(){}
+    public boolean placeShipPlayer2(int x, int y, Direction dir){
+        return false; //TODO::: implement me
+    }
 
 
 
