@@ -5,11 +5,11 @@ import javax.swing.*;
 public class Block {
 
     private boolean hasShip;
-    public FireRepsonse blockStatus;
+    public FireResponse blockStatus;
     public JLabel blockLabel;
 
     public Block(){
-        blockStatus = FireRepsonse.NONE;
+        blockStatus = FireResponse.NONE;
         hasShip = false;
         blockLabel = new JLabel();
     }
@@ -22,14 +22,14 @@ public class Block {
         return hasShip;
     }
 
-    public FireRepsonse reciveFire() {
-      if(blockStatus == FireRepsonse.NONE) {
+    public FireResponse reciveFire() {
+      if(blockStatus == FireResponse.NONE) {
           if (hasShip)
-              blockStatus = FireRepsonse.HIT;
+              blockStatus = FireResponse.HIT;
           else
-              blockStatus = FireRepsonse.MISS;
+              blockStatus = FireResponse.MISS;
           return blockStatus;
       }else
-          return FireRepsonse.ALREADYFIRED;
+          return FireResponse.ALREADYFIRED;
     }
 }

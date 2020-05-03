@@ -2,7 +2,6 @@ package view;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -30,16 +29,39 @@ public class ImageLoader {
     }
 
 
+
+    private static ImageIcon waterhit;
+
+    static {
+        try {
+            waterhit = new ImageIcon(ImageIO.read(new File("src/waterhit.jpeg")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static ImageIcon shiphit;
+
+    static {
+        try {
+            shiphit = new ImageIcon(ImageIO.read(new File("src/shiphit.jpg")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     static ImageIcon getWater(){
         return water;
     }
     static ImageIcon getWaterHit(){
-        return null;
+        return waterhit;
     }
     static ImageIcon getShip(){
         return ship;
     }
     static ImageIcon getShipHit(){
-        return null;
+        return shiphit;
     }
 }

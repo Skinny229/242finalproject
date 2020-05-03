@@ -5,7 +5,7 @@ public class Player {
 
     private final static int maxHits = 12;
 
-    private int shipPlacedCount = 0;
+    private int shipPlacedCount;
 
     private int hitCount;
     private Block[][] table = new Block[8][8];
@@ -15,6 +15,7 @@ public class Player {
             for(int j = 0; j < 8; j++)
                 table[i][j] = new Block();
         }
+        shipPlacedCount = 0;
     }
 
 
@@ -100,15 +101,15 @@ public class Player {
 
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++)
-                asEnemy[i][j] = table[i][j].blockStatus == FireRepsonse.HIT;
+                asEnemy[i][j] = table[i][j].blockStatus == FireResponse.HIT;
         }
         return asEnemy;
     }
 
 
-    FireRepsonse beingFiredOn(int x, int y){
-        FireRepsonse response  = table[x][y].reciveFire();
-        if (response == FireRepsonse.HIT)
+    FireResponse beingFiredOn(int y, int x){
+        FireResponse response  = table[y][x].reciveFire();
+        if (response == FireResponse.HIT)
             hitCount++;
         return response;
     }

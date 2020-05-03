@@ -14,7 +14,7 @@ import java.awt.event.MouseEvent;
 public class ShipPlacer extends JFrame implements ActionListener {
 
 
-    JPanel selfView = new JPanel(new GridLayout(8, 8));
+    JPanel view = new JPanel(new GridLayout(8, 8));
     JButton directionButton = new JButton("Up");
     private Player ply;
 
@@ -24,7 +24,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
     public ShipPlacer(Player ply) {
         super("Battleship -- Place Ships");
         setSize(1000, 500);
-        setContentPane(selfView);
+        setContentPane(view);
         this.ply = ply;
 
 

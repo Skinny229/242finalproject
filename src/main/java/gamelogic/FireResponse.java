@@ -1,5 +1,5 @@
 package gamelogic;
 
-public enum FireRepsonse {
+public enum FireResponse {
     HIT,MISS,ALREADYFIRED,NONE
 }

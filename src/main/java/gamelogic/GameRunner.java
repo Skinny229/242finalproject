@@ -1,20 +1,54 @@
 package gamelogic;
 
+import view.AIFrame;
+import view.PlayerFrame;
+import view.ShipPlacer;
+
+import java.util.Random;
+
 public class GameRunner {
 
-    private Player player1;
-    private Player player2;
+    private static Player player1;
+    private static Player player2;
 
 
-    public GameRunner(){
+    static int onPlayer = 1;
+
+    public GameRunner()  {
         player1 = new Player();
         player2 = new Player();
 
+        new ShipPlacer(player1);
+        new ShipPlacer(player2);
 
+
+        while(!player1.allShipsPlaced() || !player2.allShipsPlaced()) {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+
+            }
+        }
+
+
+       //Player vs AI
+        new PlayerFrame(player1);
+        new AIFrame(player2);
+
+
+        //Player vs Player
 
     }
 
+    public static String AIFire() {
+        int y = new Random().nextInt(7);
+        int x = new Random().nextInt(7);
+        System.out.println(y +" + "+ x);
 
+        while(firePlayer2(y,x) == FireResponse.ALREADYFIRED);
+
+        return (String) (y+""+x);
+    }
 
 
     public PlayerView getPlayer1(){
@@ -27,26 +61,13 @@ public class GameRunner {
     }
 
 
-
-    public boolean placeShipPlayer1(int x, int y, Direction dir){
-
-        return player1.setShip(x,y,dir); //TODO:: Implement me
-    }
-
-    public boolean placeShipPlayer2(int x, int y, Direction dir){
-        return false; //TODO::: implement me
+    public static FireResponse firePlayer1(int y, int x){
+        return player2.beingFiredOn(y,x);
     }
 
 
-
-
-    public FireRepsonse firePlayer1(int x, int y){
-        return player2.beingFiredOn(x,y);
-    }
-
-
-    public FireRepsonse firePlayer2(int x, int y){
-        return player1.beingFiredOn(x,y);
+    public static FireResponse firePlayer2(int y, int x){
+        return player1.beingFiredOn(y,x);
     }
 
 
