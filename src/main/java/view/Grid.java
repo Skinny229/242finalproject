@@ -1,6 +1,8 @@
+package view;
+
 public class Grid
 {
-    
+   /*
 private Location[][] grid;
 
 // Number of rows and columns
@@ -156,4 +158,6 @@ public void printShips() {
             }
         }
     }
+
+    */
 }

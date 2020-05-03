@@ -6,10 +6,12 @@ public class Block {
 
     private boolean hasShip;
     public FireRepsonse blockStatus;
+    public JLabel blockLabel;
 
     public Block(){
         blockStatus = FireRepsonse.NONE;
         hasShip = false;
+        blockLabel = new JLabel();
     }
 
     public void setHasShip(boolean hasShip) {
@@ -17,7 +19,7 @@ public class Block {
     }
 
     public boolean hasShip(){
-        return hasShip();
+        return hasShip;
     }
 
     public FireRepsonse reciveFire() {

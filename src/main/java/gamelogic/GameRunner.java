@@ -9,6 +9,9 @@ public class GameRunner {
     public GameRunner(){
         player1 = new Player();
         player2 = new Player();
+
+
+
     }
 
 
@@ -23,8 +26,11 @@ public class GameRunner {
         return new PlayerView(player1, player2);
     }
 
+
+
     public boolean placeShipPlayer1(int x, int y, Direction dir){
-        return false; //TODO:: Implement me
+
+        return player1.setShip(x,y,dir); //TODO:: Implement me
     }
 
     public boolean placeShipPlayer2(int x, int y, Direction dir){
@@ -44,8 +50,13 @@ public class GameRunner {
     }
 
 
-    public boolean hasWinner(){
-        return false; //TODO::IMPLEMENT ME
+    public int hasWinner(){
+        if(!player2.isAllShipsDown() && !player1.isAllShipsDown())
+            return 0;
+        if(player2.isAllShipsDown())
+            return 1;
+        else
+            return 2;
     }
 
 

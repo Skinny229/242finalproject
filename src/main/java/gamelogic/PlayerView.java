@@ -9,19 +9,26 @@ public class PlayerView {
     public PlayerView(Player selfPlayer, Player enemyPlayer){
 
         Block[][] selfTable = selfPlayer.getTable();
+
+
         for (int i = 0; i < 8; i++)
-            for (int j = 0; j < 8; j++)
+            for (int j = 0; j < 8; j++){
+                BlockAsSelf blockState;
                 switch(selfTable[i][j].blockStatus){
                     case HIT:
-                        self[i][j] = BlockAsSelf.SHIPHIT;
+                        blockState = BlockAsSelf.SHIPHIT;
                     case MISS:
-                        self[i][j] = BlockAsSelf.WATERHIT;
+                        blockState = BlockAsSelf.WATERHIT;
                     case NONE:
                         if(selfTable[i][j].hasShip())
-                            self[i][j] = BlockAsSelf.SHIP;
+                            blockState = BlockAsSelf.SHIP;
                         else
-                            self[i][j] = BlockAsSelf.WATER;
+                           blockState = BlockAsSelf.WATER;
+                    default:
+                        blockState = BlockAsSelf.WATER;
                 }
+                self[i][j] = blockState;
+            }
 
 
             enemy = enemyPlayer.getTableAsEnemy();

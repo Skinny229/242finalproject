@@ -18,6 +18,9 @@ public class ViewClass extends JFrame {
         setSize(1000, 500);
         setContentPane(selfView);
 
+
+        //SetToolTip for hover event like thing
+
         JLabel label1 = new JLabel();
         JLabel label2 = new JLabel();
         label1.addMouseListener(new MouseAdapter() {
