@@ -1,7 +1,4 @@
-import gamelogic.GameRunner;
-import gamelogic.Player;
-import view.ShipPlacer;
-import view.ViewClass;
+import controller.GameRunner;
 
 public class Main {
 

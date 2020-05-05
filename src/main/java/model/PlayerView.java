@@ -1,10 +1,14 @@
-package gamelogic;
+package model;
+
+import model.Block;
+import model.BlockAsSelf;
+import model.Player;
 
 public class PlayerView {
 
 
-    public BlockAsSelf[][] self = new BlockAsSelf[8][8];
-    public boolean[][] enemy = new boolean[8][8];
+    private BlockAsSelf[][] self = new BlockAsSelf[8][8];
+    private boolean[][] enemy = new boolean[8][8];
 
     public PlayerView(Player selfPlayer, Player enemyPlayer){
 
@@ -16,16 +20,16 @@ public class PlayerView {
                 BlockAsSelf blockState;
                 switch(selfTable[i][j].blockStatus){
                     case HIT:
-                        blockState = BlockAsSelf.SHIPHIT;
+                        blockState = BlockAsSelf.SHIP_HIT;
                     case MISS:
-                        blockState = BlockAsSelf.WATERHIT;
+                        blockState = BlockAsSelf.WATER_HIT;
                     case NONE:
                         if(selfTable[i][j].hasShip())
-                            blockState = BlockAsSelf.SHIP;
+                            blockState = BlockAsSelf.SHIP_NO_HIT;
                         else
-                           blockState = BlockAsSelf.WATER;
+                           blockState = BlockAsSelf.WATER_NO_HIT;
                     default:
-                        blockState = BlockAsSelf.WATER;
+                        blockState = BlockAsSelf.WATER_NO_HIT;
                 }
                 self[i][j] = blockState;
             }
@@ -34,4 +38,12 @@ public class PlayerView {
             enemy = enemyPlayer.getTableAsEnemy();
         }
 
+
+    public BlockAsSelf[][] getSelf() {
+        return self;
+    }
+
+    public boolean[][] getEnemy() {
+        return enemy;
+    }
 }

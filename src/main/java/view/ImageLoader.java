@@ -8,11 +8,11 @@ import java.io.IOException;
 public class ImageLoader {
 
 
-    private static ImageIcon ship;
+    private static  ImageIcon ship;
 
     static {
         try {
-            ship = new ImageIcon(ImageIO.read(new File("src/test.png")));
+            ship = new ImageIcon(ImageIO.read(new File("src/ship.jpg")));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,9 +1,9 @@
 package view;
 
-import gamelogic.Block;
-import gamelogic.FireResponse;
-import gamelogic.GameRunner;
-import gamelogic.Player;
+import model.Block;
+import model.FireResponse;
+import controller.GameRunner;
+import model.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,10 +19,10 @@ public class PlayerFrame extends JFrame {
     JPanel selfView = new JPanel(new GridLayout(8, 8));
 
     public PlayerFrame(Player ply){
-        super("YOUR VIEW");
+        super("YOUR TABLE");
 
-        setSize(1000, 500);
-        setContentPane(selfView);
+        setSize(1800, 1800);
+        add(selfView);
         this.ply = ply;
 
         Block[][] table = ply.getTable();
@@ -42,16 +42,15 @@ public class PlayerFrame extends JFrame {
                     public void mouseClicked(MouseEvent e) {
                         FireResponse response = GameRunner.firePlayer1(finalY, finalX);
                         //AI COMPONENT
-                        if (response != FireResponse.ALREADYFIRED) {
+                        if (response != FireResponse.ALREADY_FIRED) {
                             String coordsHit = GameRunner.AIFire();
                             int y = coordsHit.charAt(0) - 48;
                             int x = coordsHit.charAt(1) - 48;
-                            boolean hasHitShip = ply.getTable()[y][x].blockStatus == FireResponse.HIT ? true : false;
-                            ply.getTable()[y][x].blockLabel.setIcon(hasHitShip ? ImageLoader.getShipHit() : ImageLoader.getWaterHit());
+                            ply.getTable()[y][x].blockLabel.setIcon(ply.getTable()[y][x].blockStatus == FireResponse.HIT ? ImageLoader.getShipHit() : ImageLoader.getWaterHit());
                         }
                     }
                 });
-                add(block);
+                selfView.add(block);
             }
         setVisible(true);
     }

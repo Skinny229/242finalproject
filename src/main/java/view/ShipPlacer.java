@@ -1,8 +1,8 @@
 package view;
 
-import gamelogic.Block;
-import gamelogic.Direction;
-import gamelogic.Player;
+import model.Block;
+import model.Direction;
+import model.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +23,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
 
     public ShipPlacer(Player ply) {
         super("Battleship -- Place Ships");
-        setSize(1000, 500);
+        setSize(1800, 1800);
         setContentPane(view);
         this.ply = ply;
 

@@ -1,4 +1,4 @@
-package gamelogic;
+package model;
 
 public enum Direction {
     UP("UP"),DOWN("DOWN"),LEFT("LEFT"),RIGHT("RIGHT");

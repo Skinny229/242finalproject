@@ -1,4 +1,4 @@
-package gamelogic;
+package model;
 
 import javax.swing.*;
 
@@ -30,6 +30,6 @@ public class Block {
               blockStatus = FireResponse.MISS;
           return blockStatus;
       }else
-          return FireResponse.ALREADYFIRED;
+          return FireResponse.ALREADY_FIRED;
     }
 }

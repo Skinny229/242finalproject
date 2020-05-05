@@ -1,5 +1,8 @@
-package gamelogic;
+package controller;
 
+import model.PlayerView;
+import model.FireResponse;
+import model.Player;
 import view.AIFrame;
 import view.PlayerFrame;
 import view.ShipPlacer;
@@ -22,9 +25,10 @@ public class GameRunner {
         new ShipPlacer(player2);
 
 
+        //Wait for ship placement to be done
         while(!player1.allShipsPlaced() || !player2.allShipsPlaced()) {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
 
             }
@@ -40,33 +44,39 @@ public class GameRunner {
 
     }
 
-    public static String AIFire() {
-        int y = new Random().nextInt(7);
-        int x = new Random().nextInt(7);
-        System.out.println(y +" + "+ x);
 
-        while(firePlayer2(y,x) == FireResponse.ALREADYFIRED);
+    public synchronized static String AIFire() {
+
+
+        int y ;
+        int x ;
+        do {
+             y = new Random().nextInt(7);
+             x = new Random().nextInt(7);
+            System.out.println(y + " + " + x);
+        }
+        while(firePlayer2(y,x) == FireResponse.ALREADY_FIRED);
 
         return (String) (y+""+x);
     }
 
 
-    public PlayerView getPlayer1(){
+    public synchronized PlayerView getPlayer1(){
         return new PlayerView(player1, player2);
     }
 
 
-    public PlayerView getPlayer2(){
+    public synchronized PlayerView getPlayer2(){
         return new PlayerView(player1, player2);
     }
 
 
-    public static FireResponse firePlayer1(int y, int x){
+    public synchronized static FireResponse firePlayer1(int y, int x){
         return player2.beingFiredOn(y,x);
     }
 
 
-    public static FireResponse firePlayer2(int y, int x){
+    public synchronized static FireResponse firePlayer2(int y, int x){
         return player1.beingFiredOn(y,x);
     }
 
