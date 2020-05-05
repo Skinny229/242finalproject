@@ -49,7 +49,7 @@ public int getStatus(int row, int col) {
 // Return whether or not a location has already been guessed.
 
 public boolean alreadyGuessed(int row, int col){
-    return !grid[col][row].isUnguessed();
+    return !grid[col][row].isNotguessed();
 }  
 
 // Set whether or not there is a ship at a location 
