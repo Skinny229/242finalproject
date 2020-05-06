@@ -13,7 +13,9 @@ public class PlayerView {
 
         Block[][] selfTable = selfPlayer.getTable();
 
-        //  
+        // Determines the state of the ship 
+        // If it is a hit or miss on the ship
+        // If it is a hit or miss on the water
         
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++){
