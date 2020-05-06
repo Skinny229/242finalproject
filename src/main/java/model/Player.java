@@ -3,7 +3,7 @@ package model;
 public class Player {
 
 
-    private final static int maxHits = 9;
+    private final static int maxHits = 12;
 
     private int shipPlacedCount;
 
@@ -103,7 +103,7 @@ public class Player {
     }
 
     public boolean allShipsPlaced(){
-        return shipPlacedCount >= 3;
+        return shipPlacedCount >= 4;
     }
 
 
