@@ -12,8 +12,6 @@ import java.awt.event.MouseEvent;
 
 public class PlayerFrame extends JFrame {
 
-
-
     private Player ply;
 
     JPanel selfView = new JPanel(new GridLayout(8, 8));
@@ -26,9 +24,10 @@ public class PlayerFrame extends JFrame {
         this.ply = ply;
 
         Block[][] table = ply.getTable();
-        //Render image
-        //Every button has a fire event
-        //Within Fire event comes AI response
+        
+        // Renders images
+        // Every button has a Fire event
+        // After the Fire event comes AI response
 
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++) {
@@ -54,7 +53,5 @@ public class PlayerFrame extends JFrame {
             }
         setVisible(true);
     }
-
-
 
 }
