@@ -1,6 +1,9 @@
 package model;
 
-public enum Direction {
+public enum Direction 
+{
+    // Different types of directions to place the ships
+    
     UP("UP"),DOWN("DOWN"),LEFT("LEFT"),RIGHT("RIGHT");
 
     private String direction;
@@ -12,6 +15,5 @@ public enum Direction {
     public String toString(){
         return direction;
     }
-
 
     }
