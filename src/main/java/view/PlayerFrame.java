@@ -16,6 +16,8 @@ public class PlayerFrame extends JFrame {
 
     JPanel selfView = new JPanel(new GridLayout(8, 8));
 
+    // Creates the player view
+    
     public PlayerFrame(Player ply){
         super("YOUR TABLE");
 
