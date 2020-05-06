@@ -37,23 +37,26 @@ public class PlayerFrame extends JFrame {
                 int finalY = i;
                 int finalX = j;
                 block.setIcon(table[i][j].hasShip() ? ImageLoader.getShip() : ImageLoader.getWater());
-                block.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        FireResponse response = GameRunner.firePlayer1(finalY, finalX);
-                        //AI COMPONENT
-                        if (response != FireResponse.ALREADY_FIRED) {
-                            String coordsHit = GameRunner.AIFire();
-                            int y = coordsHit.charAt(0) - 48;
-                            int x = coordsHit.charAt(1) - 48;
-                            ply.getTable()[y][x].blockLabel.setIcon(ply.getTable()[y][x].blockStatus == FireResponse.HIT ? ImageLoader.getShipHit() : ImageLoader.getWaterHit());
-                        }
-                    }
-                });
+//                block.addMouseListener(new MouseAdapter() {
+//                    @Override
+//                    public void mouseClicked(MouseEvent e) {
+//                        FireResponse response = GameRunner.firePlayer1(finalY, finalX);
+//                        //AI COMPONENT
+//                        if (response != FireResponse.ALREADY_FIRED) {
+//                            String coordsHit = GameRunner.AIFire();
+//                            int y = coordsHit.charAt(0) - 48;
+//                            int x = coordsHit.charAt(1) - 48;
+//                            ply.getTable()[y][x].blockLabel.setIcon(ply.getTable()[y][x].blockStatus == FireResponse.HIT ? ImageLoader.getShipHit() : ImageLoader.getWaterHit());
+//                        }
+//                    }
+//                });
                 selfView.add(block);
             }
         setVisible(true);
     }
+
+
+
 
 
 

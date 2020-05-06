@@ -14,8 +14,8 @@ import java.awt.event.MouseEvent;
 public class ShipPlacer extends JFrame implements ActionListener {
 
 
-    JPanel view = new JPanel(new GridLayout(8, 8));
-    JButton directionButton = new JButton("Up");
+    JPanel view = new JPanel(new GridLayout(9, 8));
+    JButton directionButton = new JButton("DIRECTION: UP");
     private Player ply;
 
 
@@ -24,7 +24,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
     public ShipPlacer(Player ply) {
         super("Battleship -- Place Ships");
         setSize(1800, 1800);
-        setContentPane(view);
+        this.add(view);
         this.ply = ply;
 
 
@@ -34,6 +34,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++) {
                 JLabel block = table[i][j].blockLabel;
+                block.setSize(125,125);
                 int finalY = i;
                 int finalX = j;
                 //  block.setText(i +" + "+j);
@@ -45,12 +46,13 @@ public class ShipPlacer extends JFrame implements ActionListener {
                         //setVisible(true);
                     }
                 });
-                add(block);
+                view.add(block);
             }
 
 
         directionButton.addActionListener(this);
-        //  add(directionButton);
+        directionButton.setSize(10,20);
+        view.add(directionButton);
 
         setVisible(true);
 
@@ -94,7 +96,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
                 break;
         }
 
-        directionButton.setText(placeDirection.toString());
+        directionButton.setText("Direction: "+placeDirection.toString());
 
     }
 }
