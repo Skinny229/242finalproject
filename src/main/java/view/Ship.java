@@ -17,12 +17,16 @@ public class Ship
            col = NOTSET;
        }
        
+       // Sets the location of the ship on the grid 
+  
        public void setLocation(int r, int c)
        {
            row = r;
            col = c;
        }
       
+       // Sets the direction of the ship 
+  
        public void setDirection(int d)
        {
           if(d == HORIZONTAL)
@@ -51,6 +55,8 @@ public class Ship
            return length;
        }
        
+       // Determines the direction of the ship 
+  
        public int getDirection()
        {
            if (direction == "horizontal")
@@ -87,6 +93,8 @@ public class Ship
            return directionToString() + " ship of length " + length + " at " + "(" + locationToString() + ")";
        }
       
+       // Checks if the location and direction are set
+  
        public boolean isLocationSet()
        {
            if (row == -1 || col == -1)
