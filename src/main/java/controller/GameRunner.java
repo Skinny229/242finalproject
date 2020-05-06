@@ -140,19 +140,21 @@ public class GameRunner {
             }
         }
 
-        boolean onPlayer1 = false;
-        boolean flag;
-
+        //Intianciate pvp views
         SelfView selfView = new SelfView();
         EnemyView enemyView = new EnemyView();
 
         while (true) {
 
 
+            //Generate 2 dimension arrays of enums for rendering
             PlayerView model = new PlayerView(player2, player1);
+
+            //render the views
             selfView.setPlayerView(model.getSelf(), player2);
             enemyView.setPlayerView(model.getEnemy(), player1);
 
+            //Wait for player 2 FIRE
             while (!enemyView.hasFired()) {
                 try {
                     Thread.sleep(200);
@@ -164,6 +166,9 @@ public class GameRunner {
 
             if (hasWinner() != 0)
                 break;
+
+
+            //Wait for Player 2 pressing CONTINUE
             selfView.hideAndWait(player1.getPlayerNumber());
             while (!selfView.continueFlag()) {
                 try {
@@ -176,7 +181,7 @@ public class GameRunner {
             System.out.println("Swtichin  views");
 
 
-            //Some kind of waiting thing
+            //Same procedure except for player 2 it's for player 1
 
             PlayerView model2 = new PlayerView(player1, player2);
             selfView.setPlayerView(model2.getSelf(), player1);
