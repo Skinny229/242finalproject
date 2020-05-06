@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class ImageLoader {
 
+    // Adds game images 
 
     private static  ImageIcon ship;
 
@@ -28,8 +29,6 @@ public class ImageLoader {
         }
     }
 
-
-
     private static ImageIcon waterhit;
 
     static {
@@ -49,8 +48,6 @@ public class ImageLoader {
             e.printStackTrace();
         }
     }
-
-
 
     static ImageIcon getWater(){
         return water;
