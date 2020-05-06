@@ -52,13 +52,13 @@ public class ImageLoader {
     static ImageIcon getWater(){
         return water;
     }
-    static ImageIcon getWaterHit(){
+    public static ImageIcon getWaterHit(){
         return waterhit;
     }
     static ImageIcon getShip(){
         return ship;
     }
-    static ImageIcon getShipHit(){
+    public static ImageIcon getShipHit(){
         return shiphit;
     }
 }

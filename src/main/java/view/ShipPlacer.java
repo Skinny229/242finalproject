@@ -13,8 +13,10 @@ import java.awt.event.MouseEvent;
 
 public class ShipPlacer extends JFrame implements ActionListener {
 
-    JPanel view = new JPanel(new GridLayout(8, 8));
-    JButton directionButton = new JButton("Up");
+
+
+    JPanel view = new JPanel(new GridLayout(9, 8,1,1));
+    JButton directionButton = new JButton("DIR: UP");
     private Player ply;
 
     Direction placeDirection = Direction.UP;
@@ -22,9 +24,9 @@ public class ShipPlacer extends JFrame implements ActionListener {
     // Places the ships on the grid
     
     public ShipPlacer(Player ply) {
-        super("Battleship -- Place Ships");
-        setSize(1800, 1800);
-        setContentPane(view);
+        super("Battleship -- Place Ships for PLAYER " + ply.getPlayerNumber());
+        setSize(1000, 1000);
+        this.add(view);
         this.ply = ply;
 
         Block[][] table = ply.getTable();
@@ -32,6 +34,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++) {
                 JLabel block = table[i][j].blockLabel;
+                block.setSize(125,125);
                 int finalY = i;
                 int finalX = j;
                 //  block.setText(i +" + "+j);
@@ -43,11 +46,12 @@ public class ShipPlacer extends JFrame implements ActionListener {
                         //setVisible(true);
                     }
                 });
-                add(block);
+                view.add(block);
             }
 
         directionButton.addActionListener(this);
-        //  add(directionButton);
+        directionButton.setSize(10,20);
+        view.add(directionButton);
 
         setVisible(true);
 
@@ -92,7 +96,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
                 break;
         }
 
-        directionButton.setText(placeDirection.toString());
+        directionButton.setText("DIR: " + placeDirection.toString());
 
     }
 }

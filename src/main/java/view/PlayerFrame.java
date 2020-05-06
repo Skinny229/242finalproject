@@ -14,14 +14,14 @@ public class PlayerFrame extends JFrame {
 
     private Player ply;
 
-    JPanel selfView = new JPanel(new GridLayout(8, 8));
+    JPanel selfView = new JPanel(new GridLayout(8, 8,1,1));
 
     // Creates the player view
     
     public PlayerFrame(Player ply){
         super("YOUR TABLE");
 
-        setSize(1800, 1800);
+        setSize(1000, 1000);
         add(selfView);
         this.ply = ply;
 
@@ -55,5 +55,6 @@ public class PlayerFrame extends JFrame {
             }
         setVisible(true);
     }
+
 
 }

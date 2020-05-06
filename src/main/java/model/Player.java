@@ -8,14 +8,17 @@ public class Player {
 
     private int hitCount;
 
+    private int playerNumber;
+
     private Block[][] table = new Block[8][8];
 
-    public Player(){
+    public Player(int playerNumber){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++)
                 table[i][j] = new Block();
         }
         shipPlacedCount = 0;
+        this.playerNumber = playerNumber;
     }
 
     public Block[][] getTable(){
@@ -23,10 +26,10 @@ public class Player {
     }
 
     public boolean setShip(int y , int x, Direction direction){
-        
-        // Check that the placement will be in bounds in the first place
-        // Depending on the direction we check the X or Y to have a min/max value
-        
+
+        //Check that the placement will be in bounds in the first place
+        //Depending on the direction we check the X or Y to have a min/max value
+        System.out.println(String.format("Attemping place at coordinate y[%s] x[%s] with Direction[%s]",y,x,direction));
         switch (direction){
             case UP:
                 if(y < 2)
@@ -37,11 +40,11 @@ public class Player {
                     return false;
                 break;
             case LEFT:
-                if(x > 2)
+                if(x < 2)
                     return false;
                 break;
             case RIGHT:
-                if(x < 5)
+                if(x > 5)
                     return false;
                 break;
         }
@@ -105,18 +108,10 @@ public class Player {
     }
 
     public boolean allShipsPlaced(){
-        return shipPlacedCount >= 3;
+        return shipPlacedCount >= 4;
     }
 
-    public boolean[][] getTableAsEnemy(){
-        boolean[][] asEnemy = new boolean[8][8];
 
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++)
-                asEnemy[i][j] = table[i][j].blockStatus == FireResponse.HIT;
-        }
-        return asEnemy;
-    }
 
     public FireResponse beingFiredOn(int y, int x){
         FireResponse response  = table[y][x].reciveFire();
@@ -127,5 +122,9 @@ public class Player {
 
     public boolean isAllShipsDown(){
         return hitCount >= maxHits;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
     }
 }

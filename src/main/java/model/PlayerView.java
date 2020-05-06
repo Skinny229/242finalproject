@@ -1,49 +1,65 @@
 package model;
 
-import model.Block;
-import model.BlockAsSelf;
-import model.Player;
 
 public class PlayerView {
 
-    private BlockAsSelf[][] self = new BlockAsSelf[8][8];
-    private boolean[][] enemy = new boolean[8][8];
+
+    private final BlockAsSelf[][] self = new BlockAsSelf[8][8];
+    private final BlockAsEnemy[][] enemy = new BlockAsEnemy[8][8];
+
 
     public PlayerView(Player selfPlayer, Player enemyPlayer){
 
         Block[][] selfTable = selfPlayer.getTable();
 
-        // Determines the state of the ship 
+        // Determines the state of the ship for both enemy view and player view
         // If it is a hit or miss on the ship
         // If it is a hit or miss on the water
-        
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++){
-                BlockAsSelf blockState;
+                BlockAsSelf blockSelfState;
+                BlockAsEnemy blockAsEnemy;
                 switch(selfTable[i][j].blockStatus){
                     case HIT:
-                        blockState = BlockAsSelf.SHIP_HIT;
+                        blockSelfState = BlockAsSelf.SHIP_HIT;
+                        break;
                     case MISS:
-                        blockState = BlockAsSelf.WATER_HIT;
+                        blockSelfState = BlockAsSelf.WATER_HIT;
+                        break;
                     case NONE:
+
                         if(selfTable[i][j].hasShip())
-                            blockState = BlockAsSelf.SHIP_NO_HIT;
+                            blockSelfState = BlockAsSelf.SHIP_NO_HIT;
                         else
-                           blockState = BlockAsSelf.WATER_NO_HIT;
+                           blockSelfState = BlockAsSelf.WATER_NO_HIT;
+                        break;
                     default:
-                        blockState = BlockAsSelf.WATER_NO_HIT;
+                        blockSelfState = BlockAsSelf.WATER_NO_HIT;
+
                 }
-                self[i][j] = blockState;
+                switch(enemyPlayer.getTable()[j][i].blockStatus){
+                    case HIT:
+                        blockAsEnemy = BlockAsEnemy.Ship_hit;
+                        break;
+                    case MISS:
+                        blockAsEnemy = BlockAsEnemy.Water_Miss;
+                        break;
+                    case NONE:
+                    default:
+                        blockAsEnemy = BlockAsEnemy.Water;
+                }
+                self[i][j] = blockSelfState;
+                enemy[i][j] = blockAsEnemy;
+
             }
 
-            enemy = enemyPlayer.getTableAsEnemy();
         }
 
     public BlockAsSelf[][] getSelf() {
         return self;
     }
 
-    public boolean[][] getEnemy() {
+    public BlockAsEnemy[][] getEnemy() {
         return enemy;
     }
 }
