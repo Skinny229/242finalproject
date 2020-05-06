@@ -13,13 +13,12 @@ public class ViewClass extends JFrame {
 
     JPanel selfView = new JPanel(new GridLayout(8,8));
 
+      // Creates the view for placing ships 
+    
     public ViewClass(){
         super("Hello Battleship");
         setSize(1000, 500);
         setContentPane(selfView);
-
-
-        //SetToolTip for hover event like thing
 
         JLabel label1 = new JLabel();
         JLabel label2 = new JLabel();
@@ -41,11 +40,6 @@ public class ViewClass extends JFrame {
         }
         setVisible(true);
 
-
     }
-
-    //1view for placing ships
-
-    //one more for playing
 
 }
