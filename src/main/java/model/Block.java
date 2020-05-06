@@ -8,6 +8,8 @@ public class Block {
     public FireResponse blockStatus;
     public JLabel blockLabel;
 
+    // Determines if the ship blocked the attack
+    
     public Block(){
         blockStatus = FireResponse.NONE;
         hasShip = false;
@@ -22,6 +24,8 @@ public class Block {
         return hasShip;
     }
 
+    // Determines if the ship was hit
+    
     public FireResponse reciveFire() {
       if(blockStatus == FireResponse.NONE) {
           if (hasShip)

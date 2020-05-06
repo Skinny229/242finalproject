@@ -14,11 +14,14 @@ import java.awt.event.MouseEvent;
 public class AIFrame extends JFrame {
 
 
-    JPanel view = new JPanel(new GridLayout(8,8));
+
+
+    //Create the AI frame for plaver vs AI (enemy view)
+    JPanel view = new JPanel(new GridLayout(8,8,1,1));
 
     public AIFrame(Player ply) {
         super("AI VIEW");
-        setSize(1800, 1800);
+        setSize(1000, 1000);
         setContentPane(view);
 
 

@@ -22,8 +22,8 @@ public class GameRunner {
         player2 = new Player(2);
 
 
-        //aiGameSetup();
-        pvp();
+        aiGameSetup();
+        //pvp();
 
 
     }

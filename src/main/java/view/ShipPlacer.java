@@ -14,22 +14,22 @@ import java.awt.event.MouseEvent;
 public class ShipPlacer extends JFrame implements ActionListener {
 
 
+
     JPanel view = new JPanel(new GridLayout(9, 8,1,1));
     JButton directionButton = new JButton("DIR: UP");
     private Player ply;
 
-
     Direction placeDirection = Direction.UP;
-
+    
+    // Places the ships on the grid
+    
     public ShipPlacer(Player ply) {
         super("Battleship -- Place Ships for PLAYER " + ply.getPlayerNumber());
         setSize(1000, 1000);
         this.add(view);
         this.ply = ply;
 
-
         Block[][] table = ply.getTable();
-
 
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++) {
@@ -49,17 +49,16 @@ public class ShipPlacer extends JFrame implements ActionListener {
                 view.add(block);
             }
 
-
         directionButton.addActionListener(this);
         directionButton.setSize(10,20);
         view.add(directionButton);
 
         setVisible(true);
 
-
     }
-
-
+    
+    // Allows the player to set the ships
+    
     private void placeShip(int y, int x) {
 
         if (ply.setShip(y, x, placeDirection)) {
@@ -76,6 +75,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
             this.setVisible(true);
     }
 
+    // Sets the direction of the ship placed on the grid
 
     @Override
     public void actionPerformed(ActionEvent e) {

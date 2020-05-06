@@ -7,12 +7,14 @@ public class PlayerView {
     private final BlockAsSelf[][] self = new BlockAsSelf[8][8];
     private final BlockAsEnemy[][] enemy = new BlockAsEnemy[8][8];
 
+
     public PlayerView(Player selfPlayer, Player enemyPlayer){
 
         Block[][] selfTable = selfPlayer.getTable();
 
-
-
+        // Determines the state of the ship for both enemy view and player view
+        // If it is a hit or miss on the ship
+        // If it is a hit or miss on the water
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++){
                 BlockAsSelf blockSelfState;
@@ -51,10 +53,7 @@ public class PlayerView {
 
             }
 
-
-
         }
-
 
     public BlockAsSelf[][] getSelf() {
         return self;
