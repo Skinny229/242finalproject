@@ -20,7 +20,9 @@ public class ShipPlacer extends JFrame implements ActionListener {
 
 
     Direction placeDirection = Direction.UP;
-
+    
+    // Places the ships on the grid
+    
     public ShipPlacer(Player ply) {
         super("Battleship -- Place Ships");
         setSize(1800, 1800);
@@ -74,6 +76,7 @@ public class ShipPlacer extends JFrame implements ActionListener {
             this.setVisible(true);
     }
 
+    // Sets the direction of the ship placed on the grid
 
     @Override
     public void actionPerformed(ActionEvent e) {
