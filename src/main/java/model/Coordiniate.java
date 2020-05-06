@@ -1,11 +1,11 @@
 package model;
 
-public class Coordiniate {
+public class Coordinate {
 
     private int x;
     private int y;
 
-    public Coordiniate(int y,int x){
+    public Coordinate(int y,int x){
 
         this.y = y;
         this.x = x;
