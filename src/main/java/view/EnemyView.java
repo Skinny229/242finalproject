@@ -50,7 +50,9 @@ public class EnemyView extends JFrame {
                     public void mouseClicked(MouseEvent e) {
                         int finalY = finalI;
                         int finalX = finalJ;
-                        if(player.beingFiredOn(finalY,finalX) != FireResponse.ALREADY_FIRED){
+                        FireResponse response = player.beingFiredOn(finalY,finalX);
+                        if(response != FireResponse.ALREADY_FIRED){
+                            label.setIcon(response == FireResponse.HIT ? ImageLoader.getShipHit() : ImageLoader.getWaterHit());
                             flag = true;
 
                         }

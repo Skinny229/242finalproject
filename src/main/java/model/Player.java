@@ -9,14 +9,17 @@ public class Player {
 
     private int hitCount;
 
+    private int playerNumber;
+
     private Block[][] table = new Block[8][8];
 
-    public Player(){
+    public Player(int playerNumber){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++)
                 table[i][j] = new Block();
         }
         shipPlacedCount = 0;
+        this.playerNumber = playerNumber;
     }
 
 
@@ -117,5 +120,9 @@ public class Player {
 
     public boolean isAllShipsDown(){
         return hitCount >= maxHits;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
     }
 }

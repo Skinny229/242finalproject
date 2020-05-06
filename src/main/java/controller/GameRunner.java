@@ -18,19 +18,18 @@ public class GameRunner {
     static int onPlayer = 1;
 
     public GameRunner() {
-        player1 = new Player();
-        player2 = new Player();
+        player1 = new Player(1);
+        player2 = new Player(2);
 
 
-       // aiGameSetup();
+        //aiGameSetup();
         pvp();
-
 
 
     }
 
 
-    private void aiGameSetup(){
+    private void aiGameSetup() {
         new ShipPlacer(player1);
 
         placeShipsRandom();
@@ -88,7 +87,7 @@ public class GameRunner {
             }
             int y = new Random().nextInt(7);
             int x = new Random().nextInt(7);
-            player2.setShip(y,x,dir);
+            player2.setShip(y, x, dir);
 
         } while (!player2.allShipsPlaced());
 
@@ -114,8 +113,7 @@ public class GameRunner {
     }
 
 
-
-    private void pvp(){
+    private void pvp() {
 
 
         //Place ships for player 1
@@ -148,14 +146,14 @@ public class GameRunner {
         SelfView selfView = new SelfView();
         EnemyView enemyView = new EnemyView();
 
-        while(hasWinner() == 0){
+        while (true) {
 
 
-            PlayerView model = new PlayerView(player2,player1);
-            selfView.setPlayerView(model.getSelf());
+            PlayerView model = new PlayerView(player2, player1);
+            selfView.setPlayerView(model.getSelf(), player2);
             enemyView.setPlayerView(model.getEnemy(), player1);
 
-            while(!enemyView.hasFired()){
+            while (!enemyView.hasFired()) {
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -163,19 +161,40 @@ public class GameRunner {
                 }
             }
 
-            if(hasWinner() != 0)
+
+            if (hasWinner() != 0)
                 break;
+            selfView.hideAndWait(player1.getPlayerNumber());
+            while (!selfView.continueFlag()) {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+
+                }
+            }
 
             System.out.println("Swtichin  views");
 
 
             //Some kind of waiting thing
 
-            PlayerView model2 = new PlayerView(player1,player2);
-            selfView.setPlayerView(model2.getSelf());
+            PlayerView model2 = new PlayerView(player1, player2);
+            selfView.setPlayerView(model2.getSelf(), player1);
             enemyView.setPlayerView(model2.getEnemy(), player2);
 
-            while(!enemyView.hasFired()){
+            while (!enemyView.hasFired()) {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+
+                }
+            }
+
+            if (hasWinner() != 0)
+                break;
+
+            selfView.hideAndWait(player2.getPlayerNumber());
+            while (!selfView.continueFlag()) {
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -184,13 +203,13 @@ public class GameRunner {
             }
 
 
-            //
-            }
+        }
 
+        selfView.setVisible(false);
+        selfView.setVisible(false);
 
-
-
-
+        //print out winner
+        System.out.println("Congrats to winner... :" + hasWinner());
 
 
     }
