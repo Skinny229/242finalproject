@@ -6,7 +6,6 @@ import model.Player;
 
 public class PlayerView {
 
-
     private BlockAsSelf[][] self = new BlockAsSelf[8][8];
     private boolean[][] enemy = new boolean[8][8];
 
@@ -14,7 +13,8 @@ public class PlayerView {
 
         Block[][] selfTable = selfPlayer.getTable();
 
-
+        //  
+        
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++){
                 BlockAsSelf blockState;
@@ -34,10 +34,8 @@ public class PlayerView {
                 self[i][j] = blockState;
             }
 
-
             enemy = enemyPlayer.getTableAsEnemy();
         }
-
 
     public BlockAsSelf[][] getSelf() {
         return self;
