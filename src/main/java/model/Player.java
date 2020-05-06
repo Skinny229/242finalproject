@@ -2,7 +2,6 @@ package model;
 
 public class Player {
 
-
     private final static int maxHits = 12;
 
     private int shipPlacedCount;
@@ -19,16 +18,15 @@ public class Player {
         shipPlacedCount = 0;
     }
 
-
-
     public Block[][] getTable(){
         return table;
     }
 
-
     public boolean setShip(int y , int x, Direction direction){
-        //Check that the placement will be in bounds in the first place
-        //Depending on the direction we check the X or Y to have a min/max value
+        
+        // Check that the placement will be in bounds in the first place
+        // Depending on the direction we check the X or Y to have a min/max value
+        
         switch (direction){
             case UP:
                 if(y < 2)
@@ -47,9 +45,11 @@ public class Player {
                     return false;
                 break;
         }
-        //Check for overlap
-        //have to iterate through the blocks to check if there's no ships in the first place
-        //If there's interference, return false(as in not placed)
+        
+        // Check for overlap
+        // Have to iterate through the blocks to check if there's no ships in the first place
+        // If there is interference, return false (as in not placed)
+        
         switch (direction){
             case UP:
                 for(int i = y; i > y-3; i--)
@@ -72,8 +72,10 @@ public class Player {
                         return false;
                 break;
         }
-        //Then place
-        //Same for iteration strategy, this time updating the block to let it know there's a ship now there
+        
+        // Then place
+        // Same for iteration strategy, this time updating the block to let it know there's a ship now there
+        
         switch (direction){
             case UP:
                 for(int i = y; i > y-3; i--)
@@ -92,16 +94,19 @@ public class Player {
                    table[y][i].setHasShip(true);
                 break;
         }
-        //Increase ship count
+        
+        // Increases ship count
+        
         shipPlacedCount++;
-        //return true(as in ship has been placed)
+        
+        // Return true(as in ship has been placed)
+        
         return true;
     }
 
     public boolean allShipsPlaced(){
         return shipPlacedCount >= 3;
     }
-
 
     public boolean[][] getTableAsEnemy(){
         boolean[][] asEnemy = new boolean[8][8];
@@ -113,14 +118,12 @@ public class Player {
         return asEnemy;
     }
 
-
     public FireResponse beingFiredOn(int y, int x){
         FireResponse response  = table[y][x].reciveFire();
         if (response == FireResponse.HIT)
             hitCount++;
         return response;
     }
-
 
     public boolean isAllShipsDown(){
         return hitCount >= maxHits;
